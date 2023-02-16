@@ -107,17 +107,17 @@ async function bootstrap() {
   server.listen(process.env.PORT || 3000);
 
   // HTTPS
-  const privateKey = fs.readFileSync("sslcert/server.key", "utf8");
-  const certificate = fs.readFileSync("sslcert/server.crt", "utf8");
-  const httpsOptions = { key: privateKey, cert: certificate };
-  https
-    .createServer(httpsOptions, expressApp)
-    .listen(process.env.HTTPS_PORT || 443);
-  debugLog(
-    `Application is running on: ${process.env.PORT || 3000} and ${
-      process.env.HTTPS_PORT || 443
-    }`
-  );
+  // const privateKey = fs.readFileSync("sslcert/server.key", "utf8");
+  // const certificate = fs.readFileSync("sslcert/server.crt", "utf8");
+  // const httpsOptions = { key: privateKey, cert: certificate };
+  // https
+  //   .createServer(httpsOptions, expressApp)
+  //   .listen(process.env.HTTPS_PORT || 443);
+  // debugLog(
+  //   `Application is running on: ${process.env.PORT || 3000} and ${
+  //     process.env.HTTPS_PORT || 443
+  //   }`
+  // );
 }
 bootstrap();
 

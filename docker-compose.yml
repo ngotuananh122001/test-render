@@ -1,5 +1,15 @@
 version: "3.9"
 services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: tuananh
+      MYSQL_DATABASE: demo
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - 3306:3306
   api:
     build:
       dockerfile: Dockerfile
@@ -14,16 +24,4 @@ services:
       - 3003:3003
     depends_on:
       - db
-  db:
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: tuananh
-      MYSQL_DATABASE: demo
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-    ports:
-      - 3306:3306
-
     
