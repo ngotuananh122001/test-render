@@ -113,11 +113,11 @@ async function bootstrap() {
   // https
   //   .createServer(httpsOptions, expressApp)
   //   .listen(process.env.HTTPS_PORT || 443);
-  // debugLog(
-  //   `Application is running on: ${process.env.PORT || 3000} and ${
-  //     process.env.HTTPS_PORT || 443
-  //   }`
-  // );
+  debugLog(
+    `Application is running on: ${process.env.PORT || 3000} and ${
+      process.env.HTTPS_PORT || 443
+    }`
+  );
 }
 bootstrap();
 

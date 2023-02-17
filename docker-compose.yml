@@ -10,6 +10,8 @@ services:
       MYSQL_PASSWORD: test
     ports:
       - 3306:3306
+    networks:
+      - nesjs-network
   api:
     build:
       dockerfile: Dockerfile
@@ -19,9 +21,16 @@ services:
       - .:/usr/src/app
     env_file:
     - .env
+    environment:
+      TYPEORM_HOST: db
     command: npm run start:dev
     ports:
       - 3003:3003
+    networks:
+      - nesjs-network
     depends_on:
       - db
     
+networks:
+    nesjs-network:
+      driver: bridge
