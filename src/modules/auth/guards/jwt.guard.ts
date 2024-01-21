@@ -15,9 +15,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
       return false;
     }
 
-
-
-    // Get bearer token from request
     const request = context.switchToHttp().getRequest();
     const bearerToken = request.headers.authorization;
     const token = bearerToken.split(' ')[1];
@@ -30,7 +27,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     if (!isValidToken) {
       return false;
     }
-
 
     return true;
   }

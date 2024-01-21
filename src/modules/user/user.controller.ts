@@ -12,6 +12,7 @@ import { RegisterDto } from "./dto/register.dto";
 import { ResetPwdDto } from "./dto/reset-pwd.dto";
 import { UploadProfileDto } from "./dto/upload-profile.dto";
 import { UserService } from "./user.service";
+import { AuthTwitterGuard } from "../auth/guards/twitter.guard";
 
 @Controller('user')
 @ApiTags('user')
@@ -36,6 +37,26 @@ export class UserController {
   })
   async login(@Body() data: LoginDto) {
     return this.userService.login(data);
+  }
+
+  @Get('/login-by-twitter')
+  @ApiOperation({
+    summary: 'Login',
+    description: 'Login',
+  })
+  @UseGuards(AuthTwitterGuard)
+  async loginByTwitter() {
+    return;
+  }
+
+  @Get('/twitter/callback')
+  @ApiOperation({
+    summary: 'callback',
+    description: 'callback',
+  })
+  @UseGuards(AuthTwitterGuard)
+  async twitterCallback(@Req() req) {
+    return 'Login by twitter success';
   }
 
   @Get('/me')
